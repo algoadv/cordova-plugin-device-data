@@ -41,7 +41,7 @@
             encoding:NSUTF8StringEncoding];
     }
 
-    - (void)getAppName : (CDVInvokedUrlCommand *)command
+    - (void)getInfo : (CDVInvokedUrlCommand *)command
     {
         NSString * callbackId = command.callbackId;
         
