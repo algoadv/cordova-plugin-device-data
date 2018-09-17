@@ -18,11 +18,10 @@
     </platform>
 
     <platform name="ios">
-        <plugins-plist key="DeviceDataPlugin" string="DeviceDataPlugin" />
-
         <config-file target="config.xml" parent="/*">
             <feature name="DeviceDataPlugin">
                 <param name="ios-package" value="DeviceDataPlugin" />
+                <param name="onload" value="true" />
             </feature>
         </config-file>
 
