@@ -6,39 +6,26 @@
 #include <sys/sysctl.h>
 
 @implementation DeviceDataPlugin
-    NSString *build(void) {
-        size_t bufferSize = 64;
-        NSMutableData *buffer =
-            [[NSMutableData alloc]
-            initWithLength:bufferSize];
+    - (NSString*) build {
         
-        int status =
-            sysctlbyname("kern.osversion",
-            buffer.mutableBytes,
-            &bufferSize, NULL, 0);
+        size_t bufferSize = 64;
+        NSMutableData *buffer = [[NSMutableData alloc] initWithLength:bufferSize];
+        
+        int status = sysctlbyname("kern.osversion", buffer.mutableBytes, &bufferSize, NULL, 0);
         if (status != 0) {
             return nil;
         }
-        return [[NSString alloc]
-            initWithCString:buffer.mutableBytes
-            encoding:NSUTF8StringEncoding];
+        return [[NSString alloc] initWithCString:buffer.mutableBytes encoding:NSUTF8StringEncoding];
     }
 
-    NSString *device(void) {
+    - (NSString*) device {
         size_t bufferSize = 64;
-        NSMutableData *buffer =
-            [[NSMutableData alloc]
-            initWithLength:bufferSize];
-        int status =
-            sysctlbyname("hw.machine",
-            buffer.mutableBytes,
-            &bufferSize, NULL, 0);
+        NSMutableData *buffer = [[NSMutableData alloc] initWithLength:bufferSize];
+        int status = sysctlbyname("hw.machine", buffer.mutableBytes, &bufferSize, NULL, 0);
         if (status != 0) {
             return nil;
         }
-        return [[NSString alloc]
-            initWithCString:buffer.mutableBytes
-            encoding:NSUTF8StringEncoding];
+        return [[NSString alloc] initWithCString:buffer.mutableBytes encoding:NSUTF8StringEncoding];
     }
 
     - (void)getInfo : (CDVInvokedUrlCommand *)command
