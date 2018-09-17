@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-device-data",
+  "version": "1.0.0",
+  "description": "Plugin that retrieves device information to use with google adwords",
+  "keywords": [
+    "android",
+    "device",
+    "advertising id",
+    "google adwords",
+    "playstore",
+    "cordova",
+    "phonegap"
+  ],
+  "maintainers": [
+    {
+      "name": "sow",
+      "email": "sow@cpmstars.com"
+    }
+  ],
+  "author": "AlgoAdtech Ltd",
+  "license": "MIT",
+  "cordova": {
+    "id": "cordova-plugin-device-data",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "directories": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algoadv/cordova-plugin-device-data.git"
+  }
+}

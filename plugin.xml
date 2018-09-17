@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-device-data" version="1.0.2" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Android Install Referrer</name>
+    <js-module name="install-referrer-android" src="www/device-data.js">
+        <merges target="plugins.deviceData" />
+    </js-module>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DeviceDataPlugin">
+                <param name="android-package" value="com.algoadtech.devicedata.DeviceDataPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        
+        <source-file src="src/android/DeviceDataPlugin.java" target-dir="src/com/algoadtech/devicedata" />
+        <framework src="com.google.android.gms:play-services-ads:+" />
+    </platform>
+
+    <platform name="ios">
+        <plugins-plist key="DeviceDataPlugin" string="DeviceDataPlugin" />
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="DeviceDataPlugin">
+                <param name="ios-package" value="DeviceDataPlugin" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/DeviceDataPlugin.h" />
+        <source-file src="src/ios/DeviceDataPlugin.m" />
+    </platform>
+</plugin>
