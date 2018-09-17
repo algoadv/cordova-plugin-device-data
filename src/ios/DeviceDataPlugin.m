@@ -1,6 +1,9 @@
 #import "DeviceDataPlugin.h"
 #import <Cordova/CDVPluginResult.h>
+#import <Foundation/Foundation.h>
 #import <AdSupport/ASIdentifierManager.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 @implementation DeviceDataPlugin
     NSString *build(void) {
@@ -8,6 +11,7 @@
         NSMutableData *buffer =
             [[NSMutableData alloc]
             initWithLength:bufferSize];
+        
         int status =
             sysctlbyname("kern.osversion",
             buffer.mutableBytes,
@@ -50,15 +54,15 @@
         NSUUID *adId = [[ASIdentifierManager sharedManager] advertisingIdentifier]; 
         NSString *deviceAdvertiserId = [adId UUIDString];
 
-        NSDictionary *appData = NSDictionary = [
-            "deviceId" : deviceAdvertiserId,
-            "os" : "iOS",
-            "osVersion" : osVersion,
-            "locale" : locale,
-            "deviceModel" : deviceModel,
-            "buildId": build,
-            "appVersion" : appVersion
-        ];
+        NSDictionary *appData = @{
+            @"deviceId" : deviceAdvertiserId,
+            @"os" : @"iOS",
+            @"osVersion" : osVersion,
+            @"locale" : locale,
+            @"deviceModel" : deviceModel,
+            @"buildId": build,
+            @"appVersion" : appVersion
+        };
 
         NSError *error; 
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:appData 
