@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-device-data",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Plugin that retrieves device information to use with google adwords",
   "keywords": [
     "android",
